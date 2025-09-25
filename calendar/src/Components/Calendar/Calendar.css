@@ -1,0 +1,364 @@
+.calendar-container {
+    width: 60%;
+    aspect-ratio: 10 / 5;
+    background-color: #ABB8B9;
+    padding: 40px;
+    border-radius: 20px;
+    display: flex;
+    flex-wrap: wrap;
+    gap: 10px;
+    flex-direction: column;
+}
+
+.calendar {
+    width: 40%;
+}
+
+.head {
+    font-family: BebasNeue;
+    font-size: 60px;
+    color: white;
+    letter-spacing: 5px;
+}
+
+.navigate-date {
+    display: flex;
+    align-items: center;
+    column-gap: 5px;
+    margin: 10px 0;
+    width: 92%;
+}
+
+.navigate-date h2 {
+    font-size: 26px;
+    color: #606060;
+    font-weight: lighter;
+    width: 50%;
+}
+
+.buttons-arrows {
+    display: flex;
+    column-gap: 10px;
+    font-size: 28px;
+    color: #B8F8FF;
+}
+
+.weekdays {
+    width: 100%;
+    display: flex;
+    margin: 20px 0;
+}
+
+.weekdays span {
+    width: calc(100% / 7);
+    font-size: 20px;
+    font-weight: bold;
+    color: #606060;
+}
+
+.days {
+    display: flex;
+    flex-wrap: wrap;
+    row-gap: 20px;
+}
+
+.empty-cell {
+    display: flex;
+    width: calc(100% / 7);
+}
+
+.day{
+    font-size: 16px;
+    color: #606060;
+    font-weight: bold;
+    width: calc(100% / 7);
+    display: flex;
+    cursor: pointer;
+}
+
+.past-day{
+    opacity: 70%;
+}
+
+.events {
+    width: 60%;
+    height: 100%;
+    padding: 10px 0px;
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+    overflow: auto;
+}
+
+.event-popup {
+    position: absolute;
+    top: 42%;
+    left: 22%;
+    background-color: #CADCDE;
+    width: 20%;
+    aspect-ratio: 10/8;
+    border-radius: 20px;
+    box-shadow: 0 1px 2px rgba(0, 0, 0, 0.2);
+    display: flex;
+    flex-direction: column;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    row-gap: 15px;
+}
+
+.time-input {
+    display: flex;
+    column-gap: 10px;
+    color: #606060;
+    width: 40%;
+    justify-content: space-between;
+}
+
+.time-input input[type='number']::-webkit-outer-spin-button,
+.time-input input[type='number']::-webkit-inner-spin-button {
+    appearance: none;
+}
+
+.event-popup-time {
+    font-family: BebasNeue;
+    font-size: 24px;
+    display: flex;
+    align-items: center;
+    width: auto;
+}
+
+.time-input input {
+    background-color: transparent;
+    border: none;
+    border-top: 2px solid #606060;
+    border-bottom: 2px solid #606060;
+    text-align: center;
+    width: 35%;
+}
+
+.event-textarea {
+    background-color: #606060;
+    color: white;
+    width: 70%;
+    border: none;
+    padding: 10px;
+    border-radius: 5px;
+    aspect-ratio: 10/3;
+    resize: none;
+}
+
+.event-textarea::placeholder {
+    color: white;
+    font-size: 14px;
+}
+
+.event {
+    width: 100%;
+    height: 20%;
+    background-color: #CADCDE;
+    border-radius: 20px;
+    padding: 15px;
+    display: flex;
+    gap: 10px;
+}
+
+.events-head{
+    font-size: 26px;
+    color: #606060;
+    font-weight: lighter;
+    width: 100%;
+}
+
+.event-date-wrapper {
+    display: flex;
+    max-width: 40%;
+    width: 30%;
+    padding: 5px;
+    flex-direction: column;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    border-right: 1px solid #606060;
+    row-gap: 5px;
+}
+
+.event-date {
+    font-size: 14px;
+    width: 100%;
+    text-align: center;
+}
+
+.event-time {
+    font-size: 16px;
+    font-weight: bold;
+}
+
+.event-text {
+    max-width: 60%;
+    width: 100%;
+    overflow-wrap: break-word;
+}
+
+.event-buttons {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    gap: 10px;
+}
+
+.event-buttons-modal, .event-buttons-modal-delete{
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    gap: 10px;
+    width: 50%;
+}
+
+.action-buttons-modal{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 10px;
+    width: 100%;
+}
+
+.action-popup-add, .action-popup-viewing{
+    background-color: #B8F8FF;
+    border: 2px solid #606060;
+    border-radius: 5px;
+    font-size: 22px;
+    font-family: BebasNeue;
+    color: #606060;
+    width: 50%;
+    height: auto;
+}
+
+.event-popup-save, .event-popup-cancel, .event-popup-delete {
+    background-color: #B8F8FF;
+    border: 2px solid #606060;
+    border-radius: 5px;
+    font-size: 22px;
+    font-family: BebasNeue;
+    color: #606060;
+    width: 100%;
+    height: auto;
+}
+
+.form {
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 10px;
+}
+
+.errors {
+    color: #606060;
+}
+
+.delete-container{
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    gap: 10px;
+}
+
+.delete-container h2{
+    font-size: 26px;
+    color: #606060;
+    width: 50%;
+}
+
+.time-picker-react {
+    width: 100%;
+    font-family: inherit;
+}
+
+.react-time-picker {
+    display: inline-flex;
+    position: relative;
+    width: 100%;
+}
+
+.react-time-picker__wrapper {
+    display: flex;
+    flex-grow: 1;
+    flex-shrink: 0;
+    align-items: center;
+    border: none;
+    padding: 8px 12px;
+    background: transparent;
+    justify-content: center;
+    width: 100%;
+}
+
+.react-time-picker__inputGroup {
+    display: flex;
+    align-items: center;
+    min-width: 0;
+    flex-grow: 1;
+    justify-content: center;
+}
+
+.react-time-picker__inputGroup input{
+    width: 50% !important;
+}
+
+.react-time-picker__inputGroup__input {
+    border: none;
+    outline: none;
+    font-size: 16px;
+    padding: 4px;
+    text-align: center;
+    background: transparent;
+    width: 40px;
+}
+
+.react-time-picker__inputGroup__input:focus {
+    background-color: #f7fafc;
+    border-radius: 4px;
+}
+
+.react-time-picker__inputGroup__divider {
+    padding: 0 4px;
+    color: #718096;
+}
+
+.react-time-picker__inputGroup__leadingZero {
+    display: none;
+}
+
+.react-time-picker__button {
+    border: 0;
+    background: transparent;
+    padding: 4px 6px;
+    color: #718096;
+    cursor: pointer;
+    transition: color 0.2s ease;
+}
+
+.react-time-picker__button:hover {
+    color: #2d3748;
+}
+
+.react-time-picker__button:disabled {
+    color: #cbd5e0;
+    cursor: not-allowed;
+}
+
+.react-time-picker__button__icon {
+   display: none;
+}
+
+.past-event{
+    opacity: 60%;
+}
+
+.action-container{
+    display: flex;
+    flex-direction: column;
+    align-items: flex-end;
+}
