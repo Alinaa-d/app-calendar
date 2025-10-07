@@ -1,0 +1,34 @@
+@font-face {
+    font-family: Comfortaa;
+    src: url('public/fonts/Comfortaa-VariableFont_wght.ttf');
+    font-weight: 400;
+}
+
+@font-face {
+    font-family: BebasNeue;
+    src: url('public/fonts/BebasNeue-Regular.ttf');
+}
+
+:root {
+    --light-grey: #abb8b9;
+    --white: #ffffff;
+    --dark-grey: #606060;
+    --cyan: #b8f8ff;
+    --light-blue: #cadcde;
+}
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: Comfortaa, sans-serif;
+}
+
+.container {
+    width: 100%;
+    height: 100vh;
+    background-color: #cadcde;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
