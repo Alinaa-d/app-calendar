@@ -27,11 +27,13 @@ export const useCalendar = () => {
         watch,
         setValue,
         control,
+        reset,
+        getValues,
         formState: { errors },
     } = useForm({
         resolver: yupResolver(noteFormSchema),
         defaultValues: {
-            time: '00:00',
+            time: '',
             text: '',
             events: [],
         },
@@ -96,7 +98,7 @@ export const useCalendar = () => {
         setIsActionPopupShown(false);
         setIsEventPopupShown(true);
         setEditingEvent(null);
-        setValue('time', '00:00');
+        setValue('time', '');
         setValue('text', '');
     };
 
@@ -123,8 +125,6 @@ export const useCalendar = () => {
 
         setIsEventPopupShown(false);
         setEditingEvent(null);
-        setValue('time', '00:00');
-        setValue('text', '');
     };
 
     const handleEditEvent = (event) => {
@@ -132,8 +132,10 @@ export const useCalendar = () => {
             ...currentState,
             selectedDate: dayjs(event.date),
         }));
+
         setValue('time', event.time);
         setValue('text', event.text);
+
         setEditingEvent(event);
         setIsEventPopupShown(true);
     };
@@ -155,9 +157,7 @@ export const useCalendar = () => {
         }
     };
 
-    const dateFormat = 'MMMM D, YYYY';
-
-    const filteredEvents = () => {
+    const filterEvents = (events) => {
         if (!calendarState.selectedDate) return events;
         return events.filter((event) =>
             dayjs(event.date).isSame(calendarState.selectedDate, 'day')
@@ -172,7 +172,7 @@ export const useCalendar = () => {
                 replace(parsedEvents);
             }
         }
-    }, [replace]);
+    }, []);
 
     useEffect(() => {
         localStorage.setItem('calendarEvents', JSON.stringify(events));
@@ -201,10 +201,10 @@ export const useCalendar = () => {
         eventDeletePopup,
         handleDeleteEvent,
         setEventDeletePopup,
-        dateFormat,
-        filteredEvents,
+        filterEvents,
         openDeleteModal,
         handleEditEvent,
         events,
+        control,
     };
 };

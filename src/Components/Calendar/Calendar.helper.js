@@ -1,6 +1,7 @@
 import * as yup from 'yup';
 import dayjs from 'dayjs';
 
+export const dateFormat = 'MMMM D, YYYY';
 export const daysOfWeek = ['M', 'T', 'W', 'T', 'F', 'S', 'S'];
 export const monthsOfYear = [
     'January',
@@ -18,7 +19,7 @@ export const monthsOfYear = [
 ];
 
 export const noteFormSchema = yup.object().shape({
-    time: yup.string(),
+    time: yup.string().required('Required field'),
     text: yup.string().trim().required('Required field').max(50, 'Max 50 characters'),
 });
 

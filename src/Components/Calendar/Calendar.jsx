@@ -11,11 +11,13 @@ import dayjs from 'dayjs';
 import { IoClose } from 'react-icons/io5';
 import { EventModal } from './EventModal';
 import { useCalendar } from './Calendar.hook.js';
+import { dateFormat } from './Calendar.helper.js';
 
 export const Calendar = () => {
     const {
         calendarState,
         register,
+        control,
         handleMoveToPrevMonth,
         handleMoveToNextMonth,
         firstDayOfMonth,
@@ -36,10 +38,10 @@ export const Calendar = () => {
         eventDeletePopup,
         handleDeleteEvent,
         setEventDeletePopup,
-        dateFormat,
-        filteredEvents,
+        filterEvents,
         openDeleteModal,
         handleEditEvent,
+        events,
     } = useCalendar();
 
     return (
@@ -85,6 +87,7 @@ export const Calendar = () => {
                 setValue={setValue}
                 watch={watch}
                 errors={errors}
+                control={control}
             />
 
             <Modal isOpen={isActionPopupShown} onClose={() => setIsActionPopupShown(false)}>
@@ -103,6 +106,7 @@ export const Calendar = () => {
 
             <Modal
                 isOpen={eventDeletePopup.isShown}
+                onClose={() => setEventDeletePopup({ isShown: false, data: null })}
                 onClose={() => eventDeletePopup.isShown(false)}
             >
                 <div className="delete-container">
@@ -125,7 +129,7 @@ export const Calendar = () => {
                 <h2 className="events-header">
                     Events on {dayjs(calendarState.selectedDate).format(dateFormat)}
                 </h2>
-                {filteredEvents().map((event, index) => (
+                {filterEvents(events).map((event, index) => (
                     <div key={event.id} className={`event ${getEventClassName(event)}`}>
                         <div className="event-date-wrapper">
                             <div className="event-date">{dayjs(event.date).format(dateFormat)}</div>
