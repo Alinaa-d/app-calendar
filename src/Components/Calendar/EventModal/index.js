@@ -1,1 +1,1 @@
-export { EventModal } from './EventModal.jsx';
+export { EventModal } from './EventModal.tsx';

@@ -2,7 +2,7 @@ import dayjs from 'dayjs';
 import { useEffect, useState } from 'react';
 import { useFieldArray, useForm } from 'react-hook-form';
 import { yupResolver } from '@hookform/resolvers/yup';
-import { noteFormSchema } from './Calendar.helper.js';
+import { noteFormSchema } from './Calendar.helper';
 
 export const useCalendar = () => {
     const currentDate = dayjs();
@@ -11,7 +11,7 @@ export const useCalendar = () => {
         month: currentDate.month(),
         year: currentDate.year(),
         selectedDate: currentDate,
-    });
+    });//вынести
 
     const [isEventPopupShown, setIsEventPopupShown] = useState(false);
     const [isActionPopupShown, setIsActionPopupShown] = useState(false);
@@ -19,7 +19,7 @@ export const useCalendar = () => {
     const [eventDeletePopup, setEventDeletePopup] = useState({
         isShown: false,
         data: null,
-    });
+    });//вынести
 
     const {
         register,
@@ -27,13 +27,11 @@ export const useCalendar = () => {
         watch,
         setValue,
         control,
-        reset,
-        getValues,
         formState: { errors },
     } = useForm({
         resolver: yupResolver(noteFormSchema),
         defaultValues: {
-            time: '',
+            time: '',//вынести +time и +events
             text: '',
             events: [],
         },
@@ -79,6 +77,7 @@ export const useCalendar = () => {
         });
     };
 
+    //вынести day
     const handleDateSelect = (day) => {
         const selectedDate = currentMonthDate.date(day);
 
@@ -106,6 +105,7 @@ export const useCalendar = () => {
         setIsActionPopupShown(false);
     };
 
+    //вынести data
     const handleEventSubmit = (data) => {
         const newEvent = {
             id: editingEvent ? editingEvent.id : Date.now(),
@@ -127,6 +127,7 @@ export const useCalendar = () => {
         setEditingEvent(null);
     };
 
+    //вынести event
     const handleEditEvent = (event) => {
         setCalendarState((currentState) => ({
             ...currentState,
@@ -140,6 +141,7 @@ export const useCalendar = () => {
         setIsEventPopupShown(true);
     };
 
+    //вынести  eventID
     const openDeleteModal = (eventId) => {
         setEventDeletePopup({
             isShown: true,
@@ -157,6 +159,7 @@ export const useCalendar = () => {
         }
     };
 
+    //вынести events
     const filterEvents = (events) => {
         if (!calendarState.selectedDate) return events;
         return events.filter((event) =>
@@ -178,6 +181,8 @@ export const useCalendar = () => {
         localStorage.setItem('calendarEvents', JSON.stringify(events));
     }, [events]);
 
+
+    //вынести всё
     return {
         calendarState,
         handleMoveToPrevMonth,

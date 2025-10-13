@@ -6,12 +6,12 @@ import { daysOfWeek } from './Calendar.helper.js';
 import { monthsOfYear } from './Calendar.helper.js';
 import { getDayClassName } from './Calendar.helper.js';
 import { getEventClassName } from './Calendar.helper.js';
-import { Modal } from '../Modal';
 import dayjs from 'dayjs';
 import { IoClose } from 'react-icons/io5';
 import { EventModal } from './EventModal';
 import { useCalendar } from './Calendar.hook.js';
 import { dateFormat } from './Calendar.helper.js';
+import {Modal} from "../Modal/Modal.js";
 
 export const Calendar = () => {
     const {
@@ -107,7 +107,6 @@ export const Calendar = () => {
             <Modal
                 isOpen={eventDeletePopup.isShown}
                 onClose={() => setEventDeletePopup({ isShown: false, data: null })}
-                onClose={() => eventDeletePopup.isShown(false)}
             >
                 <div className="delete-container">
                     <h2>Confirm the deletion</h2>
